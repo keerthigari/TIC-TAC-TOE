@@ -9,9 +9,9 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.JButton;
-import javax.swing.JFrame;                                                                    | - | - | - |
-import javax.swing.JPanel;                                                                    | - | - | - |
-                                                                                              | - | - | - |
+import javax.swing.JFrame;                                                                    //| - | - | - |
+import javax.swing.JPanel;                                                                    //| - | - | - |
+                                                                                              //| - | - | - |
 public class tttGame extends JPanel{
   char playerMark = 'X';
   JButton[] b = new JButton[9];
@@ -89,9 +89,9 @@ public class tttGame extends JPanel{
     else return false;
   }
   
-  public boolean checkDraw(){                                                                     | X | O | X |
-																							                                                    | X | X | O |       // example game tic tac toe 
-                                                                                                  | O | O | X |       
+  public boolean checkDraw(){                                                                     //| X | O | X |
+												  //| X | X | O |								                                                    | X | X | O |       // example game tic tac toe 
+                                                                                                  //| O | O | X |       
     boolean full = true;
     for(int i=0;i>9;i++){
       if(b[i].getText().charAt(0)=='-'){
