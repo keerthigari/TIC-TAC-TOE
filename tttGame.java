@@ -24,15 +24,15 @@ public class tttGame extends JPanel{
   public void initializerButtons(){
     for(int i=0;i<9;i++){
       b[i]=new JButton();
-      b[i]=setText("-");
-      b[i]=setBAckground(Color.white);
+      b[i].setText("-");
+      b[i].setBackground(Color.white);
       b[i].addActionListener(new ActionListener(){                // ActionListener is a method we call upon a button when the button is pressed
         @Override
         public void actionPerformed(ActionEvent e){
           JButton buttonClicked=(JButton)e.getSource();             // gets the particular button that was clicked
           buttonClicked.setText(String.valueOf(playerMark));        // this is used to change default value on box to plaerMark 
         
-         if(playerMarks=='X'){
+         if(playerMark=='X'){
             playerMark='O';
             buttonClicked.setBackground(Color.CYAN);              // for x playermark the color of the block changes to cyan color
          }
@@ -56,7 +56,7 @@ public class tttGame extends JPanel{
         playerMark = 'X';
       }
       JOptionPane pane = new JOptionPane();           //Jpanel is used to create a window
-      int dialogResult = JOption.showConfirmDialog(pane,"GAME OVER"   +playerMark+    "wins. Would you like to play game again?", "GAME OVER"  , JOptionPane.YES_ON_PTION);
+      int dialogResult = JOptionPane.showConfirmDialog(pane,"GAME OVER.	   "+playerMark+    "wins. Would you like to play game again?", "GAME OVER"  , JOptionPane.YES_NO_OPTION);
       if(dialogResult == JOptionPane.YES_OPTION){
         resetTheButtons();                        //if any of the payers wins, to play the game again we have used a method resetbuttons so that tha game starts again.
       }
@@ -66,7 +66,7 @@ public class tttGame extends JPanel{
     }
     else if(checkDraw()){                     //checkdraw() method is used to check whether the game is draw or any of the player won.
       JOptionPane pane = new JOptionPane();
-      int dialogResult = JOptionPane.showConfirmDialog(pane, "Draw. Do you want to play again??",JOptionPane.YES_NO_OPTION);
+      int dialogResult = JOptionPane.showConfirmDialog(pane, "Draw. Do you want to play again??","GAME_OVER", JOptionPane.YES_NO_OPTION);
       if(dialogResult==JOptionPane.YES_OPTION){
         resetTheButtons();
       }
@@ -84,7 +84,7 @@ public class tttGame extends JPanel{
     }
   }
   
-  public boolean checkForWinner(){                                                              //checkforwinner method is used to check the winner of the game.
+  public boolean checkWinner(){                                                              //checkforwinner method is used to check the winner of the game.
     if(checkRows()==true || checkColumns()==true || checkDiagonals() == true) return true;      // checks if all the rows or columns or diagonals have any one of playermark then returns true
     else return false;
   }
@@ -104,7 +104,7 @@ public class tttGame extends JPanel{
   public boolean checkRows(){             //checks all the rows in the grid.
     int i=0;
     for(int j=0;j<3;j++){
-      if(b[i].getText().equals(b[i+1].getText()) && b[i].getText().equals(b[i+2].getText()) && b[i].charAt(0)!='-'){
+      if(b[i].getText().equals(b[i+1].getText()) && b[i].getText().equals(b[i+2].getText()) && b[i].getText().charAt(0)!='-'){
         return true;
       }
       i=i+3;
@@ -116,7 +116,7 @@ public class tttGame extends JPanel{
   public boolean checkColumns(){              // checks all the columns in game 
     int i=0;
     for(int j=0;j<3;j++){
-      if(b[i].getText().equals(b[i+3].getText()) && b[i].getText().getText().equals(b[i+6].getText()) && b[i].getText().charAt(0)!='-'){
+      if(b[i].getText().equals(b[i+3].getText()) && b[i].getText().equals(b[i+6].getText()) && b[i].getText().charAt(0)!='-'){
         return true;
       }
       i++;
